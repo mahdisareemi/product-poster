@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101820">
+  <title>معرفی محصول | پوستر دیجیتال</title>
+  <meta name="description" content="مشاهده پوستر معرفی محصول یا خدمات">
+  <style>
+    :root {
+      --bg: #f3f5f7;
+      --surface: #ffffff;
+      --text: #17212b;
+      --muted: #687582;
+      --accent: #176b87;
+      --border: #e3e8ed;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      font-family: Tahoma, Arial, sans-serif;
+      color: var(--text); background: var(--bg);
+    }
+    header {
+      background: #101820; color: white;
+      padding: 17px 20px; text-align: center;
+    }
+    header .brand { font-size: 13px; letter-spacing: .5px; opacity: .9; }
+    main { width: min(760px, calc(100% - 28px)); margin: 28px auto 40px; }
+    .intro { text-align: center; margin: 0 0 20px; }
+    h1 { font-size: clamp(21px, 4vw, 29px); margin: 0 0 8px; }
+    .intro p { color: var(--muted); margin: 0; line-height: 1.9; font-size: 14px; }
+    .poster-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 18px; padding: 14px;
+      box-shadow: 0 10px 35px rgba(20,35,50,.07);
+    }
+    .poster-button {
+      display: block; width: 100%; border: 0; padding: 0;
+      background: #e9eef2; border-radius: 12px; overflow: hidden;
+      cursor: zoom-in; color: var(--muted);
+    }
+    .poster-button img {
+      display: block; width: 100%; height: auto; min-height: 300px;
+      max-height: 72vh; object-fit: contain;
+    }
+    .placeholder {
+      min-height: 420px; display: grid; place-content: center;
+      padding: 24px; text-align: center; line-height: 2;
+      background: repeating-linear-gradient(135deg,#edf1f4,#edf1f4 12px,#e7edf1 12px,#e7edf1 24px);
+    }
+    .placeholder strong { font-size: 20px; color: #354653; }
+    .hint { color: var(--muted); font-size: 12px; text-align: center; margin: 12px 0 2px; }
+    .details { text-align: center; padding: 20px 8px 8px; }
+    .details h2 { font-size: 18px; margin: 0 0 8px; }
+    .details p { color: var(--muted); font-size: 14px; line-height: 1.9; margin: 0; }
+    .contact {
+      display: inline-block; margin-top: 15px; padding: 11px 20px;
+      border-radius: 999px; background: var(--accent); color: white;
+      text-decoration: none; font-size: 14px;
+    }
+    footer { text-align: center; color: var(--muted); font-size: 11px; padding: 0 15px 25px; }
+    .viewer {
+      position: fixed; inset: 0; z-index: 10; display: none;
+      align-items: center; justify-content: center; padding: 18px;
+      background: rgba(7,12,18,.94);
+    }
+    .viewer.open { display: flex; }
+    .viewer img {
+      max-width: 100%; max-height: 88vh; object-fit: contain;
+      transform: scale(1); transition: transform .18s ease;
+      touch-action: pinch-zoom; cursor: zoom-in;
+    }
+    .viewer img.zoomed { transform: scale(1.8); cursor: zoom-out; }
+    .close {
+      position: absolute; top: 14px; left: 16px; border: 0;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: white; color: #111; font-size: 25px; cursor: pointer;
+    }
+    @media (max-width: 480px) {
+      main { margin-top: 18px; }
+      .poster-card { padding: 9px; }
+      .placeholder { min-height: 340px; }
+    }
+  </style>
+</head>
+<body>
+  <header><div class="brand">PRODUCT SHOWCASE</div></header>
+
+  <main>
+    <section class="intro">
+      <h1>معرفی محصول یا خدمات</h1>
+      <p>برای مشاهده پوستر و جزئیات معرفی، تصویر زیر را انتخاب کنید.</p>
+    </section>
+
+    <section class="poster-card" aria-label="پوستر معرفی">
+      <!-- بعداً فایل poster.jpg را با پوستر نهایی جایگزین کنید. -->
+      <button class="poster-button" id="openPoster" type="button" aria-label="بزرگ‌نمایی پوستر">
+        <div class="placeholder" id="posterPlaceholder">
+          <strong>جایگاه پوستر شما</strong>
+          <span>پس از آماده‌شدن پوستر، تصویر نهایی<br>با نام poster.jpg در کنار index.html قرار می‌گیرد.</span>
+        </div>
+      </button>
+      <p class="hint">برای بزرگ‌نمایی، روی پوستر بزنید</p>
+
+      <div class="details">
+        <h2>عنوان محصول یا خدمات</h2>
+        <p>در این قسمت می‌توان توضیح کوتاهی درباره محصول، ویژگی‌های اصلی یا خدمات ارائه‌شده قرار داد.</p>
+        <!-- در صورت نیاز، لینک تماس یا شبکه اجتماعی را اینجا اضافه می‌کنیم. -->
+      </div>
+    </section>
+  </main>
+
+  <footer>© معرفی محصول یا خدمات</footer>
+
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="نمایش بزرگ پوستر">
+    <button class="close" id="closeViewer" type="button" aria-label="بستن">×</button>
+    <img id="largePoster" alt="پوستر معرفی محصول" src="poster.jpg">
+  </div>
+
+  <script>
+    const openButton = document.getElementById('openPoster');
+    const viewer = document.getElementById('viewer');
+    const largePoster = document.getElementById('largePoster');
+    const closeButton = document.getElementById('closeViewer');
+    const placeholder = document.getElementById('posterPlaceholder');
+
+    // تا وقتی پوستر اضافه نشده، بخش نمونه نمایش داده می‌شود.
+    const testImage = new Image();
+    testImage.onload = () => {
+      openButton.innerHTML = '<img src="poster.jpg" alt="پوستر معرفی محصول">';
+    };
+    testImage.onerror = () => {};
+    testImage.src = 'poster.jpg';
+
+    openButton.addEventListener('click', () => {
+      if (!largePoster.complete || !largePoster.naturalWidth) return;
+      viewer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    function closeViewer() {
+      viewer.classList.remove('open');
+      largePoster.classList.remove('zoomed');
+      document.body.style.overflow = '';
+    }
+    closeButton.addEventListener('click', closeViewer);
+    viewer.addEventListener('click', e => { if (e.target === viewer) closeViewer(); });
+    largePoster.addEventListener('click', () => largePoster.classList.toggle('zoomed'));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeViewer(); });
+  </script>
+</body>
+</html>
